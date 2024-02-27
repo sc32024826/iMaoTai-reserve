@@ -40,15 +40,8 @@ def decrypt_aes_ecb(ciphertext, key):
     """
     ciphertext = base64.b64decode(ciphertext)
     cipher = AES.new(key, AES.MODE_ECB)
-    print('----------------')
-    print(ciphertext, ' + ', cipher.decrypt(ciphertext), ' + ', AES.block_size)
-    print('----------------')
-    plain_str = None
-    try:
-        plain_str = unpad(cipher.decrypt(ciphertext), AES.block_size)
-    except Exception as e:
-        print(e)
-    return plain_str.decode()
+    plain_str = cipher.decrypt(ciphertext)
+    return plain_str.decode('latin1').strip()
 
 
 '''

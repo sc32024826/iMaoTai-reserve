@@ -43,8 +43,10 @@ def decrypt_aes_ecb(ciphertext, key):
     print('----------------')
     print(ciphertext, ' + ', cipher.decrypt(ciphertext), ' + ', AES.block_size)
     print('----------------')
-    plain_str = unpad(cipher.decrypt(ciphertext), len(ciphertext))
-    print(plain_str)
+    try:
+        plain_str = unpad(cipher.decrypt(ciphertext), AES.block_size)
+    except Exception as e:
+        print(e)
     return plain_str.decode()
 
 

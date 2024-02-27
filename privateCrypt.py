@@ -40,7 +40,10 @@ def decrypt_aes_ecb(ciphertext, key):
     """
     ciphertext = base64.b64decode(ciphertext)
     cipher = AES.new(key, AES.MODE_ECB)
-    plain_str = unpad(cipher.decrypt(ciphertext), AES.block_size)
+    print('----------------')
+    print(ciphertext, ' + ', cipher.decrypt(ciphertext), ' + ', AES.block_size)
+    print('----------------')
+    plain_str = unpad(cipher.decrypt(ciphertext), len(ciphertext))
     return plain_str.decode()
 
 
